@@ -5,7 +5,7 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
-                    <a href="{{ route('dashboard') }}" class="flex items-center gap-2 text-amber-400 font-bold text-lg">
+                    <a href="{{ route('dashboard') }}" style="color: #c83232;" class="flex items-center gap-2 font-bold text-lg">
                         <i class="fas fa-boxes text-xl"></i>
                         <span class="text-white hidden md:inline">Paraíso Distribuciones</span>
                     </a>
@@ -18,23 +18,23 @@
                     </x-nav-link>
 
                     <x-nav-link :href="route('productos.index')" :active="request()->routeIs('productos.*')" class="text-gray-200 hover:text-white">
-                        <i class="fas fa-box-open mr-2 text-amber-400"></i> {{ __('Productos') }}
+                        <i style="color: #c83232;" class="fas fa-box-open mr-2"></i> {{ __('Productos') }}
                     </x-nav-link>
 
                     <x-nav-link :href="route('categorias.index')" :active="request()->routeIs('categorias.*')" class="text-gray-200 hover:text-white">
-                        <i class="fas fa-tags mr-2 text-amber-400"></i> {{ __('Categorías') }}
+                        <i style="color: #c83232;" class="fas fa-tags mr-2"></i> {{ __('Categorías') }}
                     </x-nav-link>
 
                     <x-nav-link :href="route('clientes.index')" :active="request()->routeIs('clientes.*')" class="text-gray-200 hover:text-white">
-                        <i class="fas fa-users mr-2 text-amber-400"></i> {{ __('Clientes') }}
+                        <i style="color: #c83232;" class="fas fa-users mr-2"></i> {{ __('Clientes') }}
                     </x-nav-link>
 
                     <x-nav-link :href="route('ventas.index')" :active="request()->routeIs('ventas.*')" class="text-gray-200 hover:text-white">
-                        <i class="fas fa-shopping-cart mr-2 text-amber-400"></i> {{ __('Ventas') }}
+                        <i style="color: #c83232;" class="fas fa-shopping-cart mr-2"></i> {{ __('Ventas') }}
                     </x-nav-link>
 
                     <x-nav-link :href="route('proveedores.index')" :active="request()->routeIs('proveedores.*')" class="text-gray-200 hover:text-white">
-                        <i class="fas fa-truck mr-2 text-amber-400"></i> {{ __('Proveedores') }}
+                        <i style="color: #c83232;" class="fas fa-truck mr-2"></i> {{ __('Proveedores') }}
                     </x-nav-link>
                 </div>
             </div>
@@ -44,7 +44,7 @@
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
                         <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-200 bg-blue-900 hover:text-white focus:outline-none transition ease-in-out duration-150">
-                            <i class="fas fa-user-circle text-lg mr-2 text-amber-400"></i>
+                            <i style="color: #c83232;" class="fas fa-user-circle text-lg mr-2"></i>
                             <div>{{ Auth::user()->name }}</div>
                             <div class="ms-1">
                                 <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">

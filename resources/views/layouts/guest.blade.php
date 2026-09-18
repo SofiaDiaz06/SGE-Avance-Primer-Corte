@@ -21,7 +21,7 @@
         <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0">
             <div>
                 <a href="/" class="flex flex-col items-center gap-2">
-                    <div class="w-16 h-16 bg-blue-950 text-amber-400 rounded-xl flex items-center justify-center shadow-lg">
+                    <div style="background-color: #0b1654; color: #c83232;" class="w-16 h-16 rounded-xl flex items-center justify-center shadow-lg">
                         <i class="fas fa-boxes text-3xl"></i>
                     </div>
                     <span class="text-xl font-bold text-slate-800">Paraíso Distribuciones S.A.S.</span>

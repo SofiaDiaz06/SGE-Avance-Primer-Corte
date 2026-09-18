@@ -10,15 +10,11 @@ return new class extends Migration
     {
         Schema::create('purchases', function (Blueprint $table) {
             $table->id('id_compra');
-            $table->unsignedBigInteger('id_proveedor');
-            $table->date('fecha');
-            $table->decimal('total', 10, 2);
+            $table->foreignId('id_proveedor')->constrained('providers', 'id_proveedor')->onDelete('cascade');
+            $table->foreignId('id_usuario')->constrained('users', 'id')->onDelete('cascade');
+            $table->dateTime('fecha');
+            $table->decimal('total', 12, 2);
             $table->timestamps();
-
-            $table->foreign('id_proveedor')
-                  ->references('id_proveedor')
-                  ->on('providers')
-                  ->onDelete('cascade');
         });
     }
 

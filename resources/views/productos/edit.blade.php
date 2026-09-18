@@ -19,6 +19,7 @@
                     </a>
                 </div>
 
+                {{-- Errores de validación --}}
                 @if ($errors->any())
                     <div class="mb-4 p-4 bg-red-50 border border-red-200 rounded-md">
                         <p class="font-bold text-red-800 mb-2">Se encontraron errores:</p>
@@ -69,8 +70,8 @@
                                 class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-900 focus:border-blue-900 text-sm"
                                 required>
                             @foreach ($categories as $category)
-                                <option value="{{ $category->id }}"
-                                        {{ old('id_categoria', $product->id_categoria) == $category->id ? 'selected' : '' }}>
+                                <option value="{{ $category->id_categoria }}"
+                                        {{ old('id_categoria', $product->id_categoria) == $category->id_categoria ? 'selected' : '' }}>
                                     {{ $category->nombre }}
                                 </option>
                             @endforeach

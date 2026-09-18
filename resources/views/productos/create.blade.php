@@ -41,7 +41,7 @@
                         </label>
                         <input type="text" name="identificacion" id="identificacion"
                                value="{{ old('identificacion') }}"
-                               placeholder="Ej: P1"
+                               placeholder="Ej: P-011"
                                class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-900 focus:border-blue-900 text-sm"
                                required>
                         @error('identificacion')
@@ -72,8 +72,8 @@
                                 required>
                             <option value="">-- Selecciona una categoría --</option>
                             @foreach ($categories as $category)
-                                <option value="{{ $category->id }}"
-                                        {{ old('id_categoria') == $category->id ? 'selected' : '' }}>
+                                <option value="{{ $category->id_categoria }}"
+                                        {{ old('id_categoria') == $category->id_categoria ? 'selected' : '' }}>
                                     {{ $category->nombre }}
                                 </option>
                             @endforeach

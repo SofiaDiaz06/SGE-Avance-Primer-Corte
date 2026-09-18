@@ -1,78 +1,83 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-slate-800 leading-tight">
+        <h2 style="color: #0b1654;" class="font-bold text-xl leading-tight">
             {{ __('Módulo de Productos - Paraíso Distribuciones S.A.S.') }}
         </h2>
     </x-slot>
 
-    <div class="py-12 bg-slate-50 min-h-screen">
+    <div class="py-10 bg-gray-100 min-h-screen">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg p-6 border border-slate-200">
+            <div class="bg-white overflow-hidden shadow-sm sm:rounded-xl p-6 border border-gray-200">
 
                 {{-- Encabezado con botón de crear --}}
-                <div class="flex justify-between items-center mb-6">
-                    <h3 class="text-lg font-bold text-slate-800 flex items-center gap-2">
-                        <i class="fas fa-boxes text-blue-900"></i> Listado de Productos
+                <div class="flex flex-col sm:flex-row justify-between items-center gap-4 mb-6 pb-4 border-b border-gray-200">
+                    <h3 style="color: #0b1654;" class="text-lg font-bold flex items-center gap-2">
+                        <i style="color: #c83232;" class="fas fa-boxes"></i> Listado de Productos
                     </h3>
                     <a href="{{ route('productos.create') }}"
-                       class="px-4 py-2 bg-blue-950 hover:bg-blue-900 text-white rounded-md font-bold text-sm shadow inline-flex items-center gap-2">
+                       style="background-color: #c83232;"
+                       class="hover:opacity-90 text-white rounded-lg font-bold text-sm shadow px-5 py-2.5 transition inline-flex items-center gap-2">
                         <i class="fas fa-plus"></i> Nuevo Producto
                     </a>
                 </div>
 
                 {{-- Mensaje de éxito --}}
                 @if (session('success'))
-                    <div class="mb-4 p-4 bg-green-50 border border-green-200 rounded-md text-green-800">
-                        <i class="fas fa-check-circle mr-2"></i> {{ session('success') }}
+                    <div class="mb-6 p-4 bg-emerald-50 border-l-4 border-emerald-600 rounded-r-md text-emerald-900 flex items-center shadow-xs">
+                        <i class="fas fa-check-circle text-xl mr-3 text-emerald-600"></i> 
+                        <span class="font-semibold">{{ session('success') }}</span>
                     </div>
                 @endif
 
                 {{-- Tabla de productos --}}
                 @if ($products->isEmpty())
-                    <div class="text-center py-12 text-slate-500">
-                        <i class="fas fa-inbox text-5xl mb-4 text-slate-300"></i>
-                        <p class="text-lg">No hay productos registrados aún.</p>
+                    <div class="text-center py-12 text-gray-500">
+                        <i class="fas fa-inbox text-5xl mb-4 text-gray-300"></i>
+                        <p class="text-lg font-medium">No hay productos registrados aún.</p>
                         <a href="{{ route('productos.create') }}"
-                           class="mt-4 inline-block text-blue-900 hover:underline">
+                           style="color: #c83232;"
+                           class="mt-4 inline-block font-bold hover:underline">
                             Crear el primer producto
                         </a>
                     </div>
                 @else
-                    <div class="overflow-x-auto">
+                    <div class="overflow-x-auto rounded-lg border border-gray-200">
                         <table class="min-w-full divide-y divide-gray-200">
-                            <thead class="bg-slate-100">
+                            <thead style="background-color: #0b1654;" class="text-white">
                                 <tr>
-                                    <th class="px-4 py-3 text-left text-xs font-bold text-slate-700 uppercase">ID</th>
-                                    <th class="px-4 py-3 text-left text-xs font-bold text-slate-700 uppercase">Identificación</th>
-                                    <th class="px-4 py-3 text-left text-xs font-bold text-slate-700 uppercase">Nombre</th>
-                                    <th class="px-4 py-3 text-left text-xs font-bold text-slate-700 uppercase">Categoría</th>
-                                    <th class="px-4 py-3 text-right text-xs font-bold text-slate-700 uppercase">Precio</th>
-                                    <th class="px-4 py-3 text-center text-xs font-bold text-slate-700 uppercase">Stock</th>
-                                    <th class="px-4 py-3 text-center text-xs font-bold text-slate-700 uppercase">Acciones</th>
+                                    <th class="px-4 py-3.5 text-left text-xs font-bold uppercase tracking-wider">ID</th>
+                                    <th class="px-4 py-3.5 text-left text-xs font-bold uppercase tracking-wider">Identificación</th>
+                                    <th class="px-4 py-3.5 text-left text-xs font-bold uppercase tracking-wider">Nombre</th>
+                                    <th class="px-4 py-3.5 text-left text-xs font-bold uppercase tracking-wider">Categoría</th>
+                                    <th class="px-4 py-3.5 text-right text-xs font-bold uppercase tracking-wider">Precio</th>
+                                    <th class="px-4 py-3.5 text-center text-xs font-bold uppercase tracking-wider">Stock</th>
+                                    <th class="px-4 py-3.5 text-center text-xs font-bold uppercase tracking-wider">Acciones</th>
                                 </tr>
                             </thead>
                             <tbody class="bg-white divide-y divide-gray-200">
                                 @foreach ($products as $product)
-                                    <tr class="hover:bg-slate-50">
-                                        <td class="px-4 py-3 text-sm text-slate-600">{{ $product->id_producto }}</td>
-                                        <td class="px-4 py-3 text-sm font-mono text-slate-600">{{ $product->identificacion }}</td>
-                                        <td class="px-4 py-3 text-sm font-medium text-slate-800">{{ $product->nombre }}</td>
-                                        <td class="px-4 py-3 text-sm text-slate-600">
-                                            {{ $product->category->nombre ?? 'Sin categoría' }}
+                                    <tr class="hover:bg-gray-50 transition">
+                                        <td class="px-4 py-3 text-sm text-gray-500 font-medium">{{ $product->id_producto }}</td>
+                                        <td style="color: #0b1654;" class="px-4 py-3 text-sm font-mono font-bold">{{ $product->identificacion }}</td>
+                                        <td class="px-4 py-3 text-sm font-bold text-gray-900">{{ $product->nombre }}</td>
+                                        <td class="px-4 py-3 text-sm text-gray-700">
+                                            <span class="bg-gray-100 text-gray-800 px-2.5 py-1 rounded-md text-xs font-semibold">
+                                                {{ $product->category->nombre ?? 'Sin categoría' }}
+                                            </span>
                                         </td>
-                                        <td class="px-4 py-3 text-sm text-right text-slate-700">
+                                        <td class="px-4 py-3 text-sm text-right font-bold text-gray-900">
                                             ${{ number_format($product->precio, 0, ',', '.') }}
                                         </td>
                                         <td class="px-4 py-3 text-sm text-center">
-                                            <span class="px-2 py-1 rounded-full text-xs font-bold {{ $product->stock > 10 ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800' }}">
+                                            <span class="px-3 py-1 rounded-full text-xs font-extrabold {{ $product->stock > 10 ? 'bg-emerald-100 text-emerald-800' : 'bg-red-100 text-red-700' }}">
                                                 {{ $product->stock }}
                                             </span>
                                         </td>
                                         <td class="px-4 py-3 text-center">
-                                            <div class="flex justify-center gap-2">
+                                            <div class="flex justify-center items-center gap-3">
                                                 <a href="{{ route('productos.edit', $product->id_producto) }}"
-                                                   class="text-yellow-600 hover:text-yellow-800" title="Editar">
-                                                    <i class="fas fa-edit"></i>
+                                                   class="text-amber-600 hover:text-amber-800 transition p-1" title="Editar">
+                                                    <i class="fas fa-edit text-lg"></i>
                                                 </a>
                                                 <form action="{{ route('productos.destroy', $product->id_producto) }}"
                                                       method="POST"
@@ -80,8 +85,8 @@
                                                       class="inline">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="text-red-600 hover:text-red-800" title="Eliminar">
-                                                        <i class="fas fa-trash"></i>
+                                                    <button type="submit" style="color: #c83232;" class="hover:text-red-800 transition p-1" title="Eliminar">
+                                                        <i class="fas fa-trash-alt text-lg"></i>
                                                     </button>
                                                 </form>
                                             </div>
@@ -92,9 +97,15 @@
                         </table>
                     </div>
 
-                    {{-- Total de registros --}}
-                    <div class="mt-4 text-sm text-slate-500">
-                        Total: <strong>{{ $products->count() }}</strong> productos registrados.
+                    {{-- Paginación / Registros --}}
+                    <div class="mt-5 pt-3 flex justify-between items-center text-sm text-gray-500">
+                        @if ($products instanceof \Illuminate\Pagination\LengthAwarePaginator)
+                            {{ $products->links() }}
+                        @else
+                            <p class="text-sm text-gray-600">
+                                Total: <strong style="color: #0b1654;">{{ $products->count() }}</strong> productos registrados.
+                            </p>
+                        @endif
                     </div>
                 @endif
             </div>

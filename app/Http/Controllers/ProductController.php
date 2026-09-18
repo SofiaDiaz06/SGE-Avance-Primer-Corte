@@ -36,10 +36,10 @@ class ProductController extends Controller
     {
         $request->validate([
             'identificacion' => 'required|string|max:255|unique:products,identificacion',
-            'nombre' => 'required|string|max:255',
-            'precio' => 'required|numeric|min:0',
-            'stock' => 'required|integer|min:0',
-            'id_categoria' => 'required|exists:categories,id',
+            'nombre'         => 'required|string|max:255',
+            'precio'         => 'required|numeric|min:0',
+            'stock'          => 'required|integer|min:0',
+            'id_categoria'   => 'required|exists:categories,id_categoria', // <-- CORREGIDO AQUÍ
         ]);
 
         Product::create($request->all());
@@ -76,10 +76,10 @@ class ProductController extends Controller
     {
         $request->validate([
             'identificacion' => 'required|string|max:255|unique:products,identificacion,' . $id . ',id_producto',
-            'nombre' => 'required|string|max:255',
-            'precio' => 'required|numeric|min:0',
-            'stock' => 'required|integer|min:0',
-            'id_categoria' => 'required|exists:categories,id',
+            'nombre'         => 'required|string|max:255',
+            'precio'         => 'required|numeric|min:0',
+            'stock'          => 'required|integer|min:0',
+            'id_categoria'   => 'required|exists:categories,id_categoria', // <-- CORREGIDO AQUÍ
         ]);
 
         $product = Product::findOrFail($id);

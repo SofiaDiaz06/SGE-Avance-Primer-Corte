@@ -2,18 +2,26 @@
 
 namespace App\Models;
 
-use Database\Factories\UserFactory;
-use Illuminate\Database\Eloquent\Attributes\Fillable;
-use Illuminate\Database\Eloquent\Attributes\Hidden;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-#[Fillable(['name', 'email', 'password'])]
-#[Hidden(['password', 'remember_token'])]
 class User extends Authenticatable
 {
     use HasFactory, Notifiable;
+
+    protected $fillable = [
+        'cedula',
+        'name',
+        'email',
+        'password',
+        'rol',
+    ];
+
+    protected $hidden = [
+        'password',
+        'remember_token',
+    ];
 
     protected function casts(): array
     {
@@ -23,9 +31,13 @@ class User extends Authenticatable
         ];
     }
 
-    // Relación: User tiene muchas Sales
     public function sales()
     {
         return $this->hasMany(Sale::class, 'id_usuario');
+    }
+
+    public function purchases()
+    {
+        return $this->hasMany(Purchase::class, 'id_usuario');
     }
 }
