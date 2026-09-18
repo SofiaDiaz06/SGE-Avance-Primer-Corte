@@ -12,6 +12,12 @@ class Client extends Model
         'identificacion',
         'nombre',
         'telefono',
-        'ubicacion'
+        'ubicacion',
     ];
+
+    // Relación: Client tiene muchas Sales
+    public function sales()
+    {
+        return $this->hasMany(Sale::class, 'id_cliente');
+    }
 }

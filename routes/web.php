@@ -5,6 +5,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\SaleController;
+use App\Http\Controllers\ProviderController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -21,17 +22,12 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    // Módulo de Productos
-    Route::resource('productos', ProductController::class)->names('products');
-
-    // Módulo de Categorías
-    Route::resource('categorias', CategoryController::class)->names('categories');
-
-    // Módulo de Clientes
-    Route::resource('clientes', ClientController::class)->names('clients');
-
-    // Módulo de Ventas
-    Route::resource('ventas', SaleController::class)->names('sales');
+    // Módulos del ERP (todos protegidos por auth)
+    Route::resource('productos', ProductController::class);
+    Route::resource('categorias', CategoryController::class);
+    Route::resource('clientes', ClientController::class);
+    Route::resource('ventas', SaleController::class);
+    Route::resource('proveedores', ProviderController::class);
 });
 
 require __DIR__.'/auth.php';

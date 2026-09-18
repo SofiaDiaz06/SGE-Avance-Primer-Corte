@@ -11,13 +11,21 @@ return new class extends Migration
         Schema::create('sales', function (Blueprint $table) {
             $table->id('id_venta');
             $table->unsignedBigInteger('id_cliente');
+            $table->unsignedBigInteger('id_usuario')->nullable();
+            $table->date('fecha');
             $table->decimal('total', 10, 2);
+            $table->string('estado_pago', 50)->default('pendiente');
             $table->timestamps();
 
             $table->foreign('id_cliente')
                   ->references('id_cliente')
                   ->on('clients')
                   ->onDelete('cascade');
+
+            $table->foreign('id_usuario')
+                  ->references('id')
+                  ->on('users')
+                  ->onDelete('set null');
         });
     }
 

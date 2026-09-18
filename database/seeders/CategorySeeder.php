@@ -9,10 +9,15 @@ class CategorySeeder extends Seeder
 {
     public function run(): void
     {
-        Category::create(['name' => 'Papelería y Cuadernos', 'description' => 'Cuadernos, bloques y papel bond', 'active' => true]);
-        Category::create(['name' => 'Escritura', 'description' => 'Esferos, lápices, borradores y marcadores', 'active' => true]);
-        Category::create(['name' => 'Suministros de Oficina', 'description' => 'Archivadores, grapadoras y ganchos', 'active' => true]);
-        Category::create(['name' => 'Geometría y Arte', 'description' => 'Reglas, compases, pinceles y pinturas', 'active' => true]);
-        Category::create(['name' => 'Tecnología Escolar', 'description' => 'Calculadoras y accesorios básicos', 'active' => true]);
+        Category::create(['nombre' => 'Papelería y Cuadernos', 'descripcion' => 'Cuadernos, bloques y papel bond', 'activo' => true]);
+        Category::create(['nombre' => 'Escritura', 'descripcion' => 'Esferos, lápices, borradores y marcadores', 'activo' => true]);
+        Category::create(['nombre' => 'Suministros de Oficina', 'descripcion' => 'Archivadores, grapadoras y ganchos', 'activo' => true]);
+        Category::create(['nombre' => 'Geometría y Arte', 'descripcion' => 'Reglas, compases, pinceles y pinturas', 'activo' => true]);
+        Category::create(['nombre' => 'Tecnología Escolar', 'descripcion' => 'Calculadoras y accesorios básicos', 'activo' => true]);
+        Category::create(['nombre' => 'Mochilas y Morrales', 'descripcion' => 'Mochilas escolares y universitarias', 'activo' => true]);
+        Category::create(['nombre' => 'Resmas y Papel', 'descripcion' => 'Resmas de papel bond y papel periódico', 'activo' => true]);
+        Category::create(['nombre' => 'Adhesivos', 'descripcion' => 'Colbón, cinta adhesiva y silicona', 'activo' => true]);
+        Category::create(['nombre' => 'Manualidades', 'descripcion' => 'Foamy, cartulinas y materiales decorativos', 'activo' => true]);
+        Category::create(['nombre' => 'Libros y Textos', 'descripcion' => 'Libros escolares y de lectura', 'activo' => true]);
     }
 }

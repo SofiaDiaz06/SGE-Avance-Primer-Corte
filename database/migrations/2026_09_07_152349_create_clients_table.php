@@ -9,8 +9,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('clients', function (Blueprint $table) {
-            $table->id('id_cliente'); // Llave primaria como identificador único
-            $table->string('identificacion')->unique(); // Cédula o NIT
+            $table->id('id_cliente');
+            $table->string('identificacion')->unique();
             $table->string('nombre');
             $table->string('telefono')->nullable();
             $table->string('ubicacion')->nullable();

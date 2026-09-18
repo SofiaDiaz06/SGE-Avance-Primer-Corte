@@ -15,13 +15,12 @@ return new class extends Migration
             $table->decimal('precio', 10, 2);
             $table->integer('stock');
             $table->unsignedBigInteger('id_categoria');
+            $table->timestamps();
 
             $table->foreign('id_categoria')
                   ->references('id')
                   ->on('categories')
                   ->onDelete('cascade');
-
-            $table->timestamps();
         });
     }
 

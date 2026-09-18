@@ -3,29 +3,27 @@
 namespace Database\Seeders;
 
 use App\Models\User;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
-    use WithoutModelEvents;
-
-    /**
-     * Seed the application's database.
-     */
     public function run(): void
     {
-        // Usuario de prueba por defecto de Laravel
+        // 1. Usuario administrador de prueba
         User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
+            'name' => 'Administrador',
+            'email' => 'admin@paraiso.com',
+            'password' => bcrypt('password'),
         ]);
 
-        // Llamamos a los seeders personalizados de tu ERP de papelería en orden
+        // 2. Seeders del ERP, en orden correcto
         $this->call([
             CategorySeeder::class,
             ClientSeeder::class,
+            ProviderSeeder::class,
             ProductSeeder::class,
+            SaleSeeder::class,
+            PurchaseSeeder::class,
         ]);
     }
 }

@@ -11,23 +11,31 @@
                     </a>
                 </div>
 
-                <!-- Navigation Links -->
+                <!-- Navigation Links (Escritorio) -->
                 <div class="hidden space-x-6 sm:-my-px sm:ms-10 sm:flex items-center">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" class="text-gray-200 hover:text-white">
                         <i class="fas fa-chart-pie mr-2"></i> {{ __('Dashboard') }}
                     </x-nav-link>
-                    <a href="/productos" class="inline-flex items-center px-1 pt-1 text-sm font-medium text-gray-300 hover:text-white transition">
-                        <i class="fas fa-box-open mr-2 text-amber-400"></i> Productos
-                    </a>
-                    <a href="#" class="inline-flex items-center px-1 pt-1 text-sm font-medium text-gray-300 hover:text-white transition">
-                        <i class="fas fa-tags mr-2 text-amber-400"></i> Categorías
-                    </a>
-                    <a href="#" class="inline-flex items-center px-1 pt-1 text-sm font-medium text-gray-300 hover:text-white transition">
-                        <i class="fas fa-users mr-2 text-amber-400"></i> Clientes
-                    </a>
-                    <a href="#" class="inline-flex items-center px-1 pt-1 text-sm font-medium text-gray-300 hover:text-white transition">
-                        <i class="fas fa-shopping-cart mr-2 text-amber-400"></i> Ventas
-                    </a>
+
+                    <x-nav-link :href="route('productos.index')" :active="request()->routeIs('productos.*')" class="text-gray-200 hover:text-white">
+                        <i class="fas fa-box-open mr-2 text-amber-400"></i> {{ __('Productos') }}
+                    </x-nav-link>
+
+                    <x-nav-link :href="route('categorias.index')" :active="request()->routeIs('categorias.*')" class="text-gray-200 hover:text-white">
+                        <i class="fas fa-tags mr-2 text-amber-400"></i> {{ __('Categorías') }}
+                    </x-nav-link>
+
+                    <x-nav-link :href="route('clientes.index')" :active="request()->routeIs('clientes.*')" class="text-gray-200 hover:text-white">
+                        <i class="fas fa-users mr-2 text-amber-400"></i> {{ __('Clientes') }}
+                    </x-nav-link>
+
+                    <x-nav-link :href="route('ventas.index')" :active="request()->routeIs('ventas.*')" class="text-gray-200 hover:text-white">
+                        <i class="fas fa-shopping-cart mr-2 text-amber-400"></i> {{ __('Ventas') }}
+                    </x-nav-link>
+
+                    <x-nav-link :href="route('proveedores.index')" :active="request()->routeIs('proveedores.*')" class="text-gray-200 hover:text-white">
+                        <i class="fas fa-truck mr-2 text-amber-400"></i> {{ __('Proveedores') }}
+                    </x-nav-link>
                 </div>
             </div>
 
@@ -62,6 +70,68 @@
                         </form>
                     </x-slot>
                 </x-dropdown>
+            </div>
+
+            <!-- Hamburger (Móvil) -->
+            <div class="-me-2 flex items-center sm:hidden">
+                <button @click="open = ! open" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-blue-900 focus:outline-none focus:bg-blue-900 focus:text-white transition duration-150 ease-in-out">
+                    <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                        <path :class="{'hidden': open, 'inline-flex': ! open }" class="inline-flex" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        <path :class="{'hidden': ! open, 'inline-flex': open }" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Responsive Navigation Menu (Móvil) -->
+    <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
+        <div class="pt-2 pb-3 space-y-1">
+            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                <i class="fas fa-chart-pie mr-2"></i> {{ __('Dashboard') }}
+            </x-responsive-nav-link>
+
+            <x-responsive-nav-link :href="route('productos.index')" :active="request()->routeIs('productos.*')">
+                <i class="fas fa-box-open mr-2"></i> {{ __('Productos') }}
+            </x-responsive-nav-link>
+
+            <x-responsive-nav-link :href="route('categorias.index')" :active="request()->routeIs('categorias.*')">
+                <i class="fas fa-tags mr-2"></i> {{ __('Categorías') }}
+            </x-responsive-nav-link>
+
+            <x-responsive-nav-link :href="route('clientes.index')" :active="request()->routeIs('clientes.*')">
+                <i class="fas fa-users mr-2"></i> {{ __('Clientes') }}
+            </x-responsive-nav-link>
+
+            <x-responsive-nav-link :href="route('ventas.index')" :active="request()->routeIs('ventas.*')">
+                <i class="fas fa-shopping-cart mr-2"></i> {{ __('Ventas') }}
+            </x-responsive-nav-link>
+
+            <x-responsive-nav-link :href="route('proveedores.index')" :active="request()->routeIs('proveedores.*')">
+                <i class="fas fa-truck mr-2"></i> {{ __('Proveedores') }}
+            </x-responsive-nav-link>
+        </div>
+
+        <!-- Responsive Settings Options -->
+        <div class="pt-4 pb-1 border-t border-blue-900">
+            <div class="px-4">
+                <div class="font-medium text-base text-white">{{ Auth::user()->name }}</div>
+                <div class="font-medium text-sm text-gray-400">{{ Auth::user()->email }}</div>
+            </div>
+
+            <div class="mt-3 space-y-1">
+                <x-responsive-nav-link :href="route('profile.edit')">
+                    <i class="fas fa-id-card mr-2"></i> {{ __('Perfil') }}
+                </x-responsive-nav-link>
+
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+                    <x-responsive-nav-link :href="route('logout')"
+                            onclick="event.preventDefault();
+                                        this.closest('form').submit();">
+                        <i class="fas fa-sign-out-alt mr-2"></i> {{ __('Cerrar Sesión') }}
+                    </x-responsive-nav-link>
+                </form>
             </div>
         </div>
     </div>
